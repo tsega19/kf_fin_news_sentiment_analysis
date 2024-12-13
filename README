@@ -1,18 +1,18 @@
-# Financial News Analysis Project
-
+Financial News Analysis Pipeline
+Overview
 This repository contains a pipeline for analyzing financial news data to explore correlations between news sentiment and stock market movements. The analysis leverages exploratory data analysis (EDA), sentiment analysis, and time series analysis to extract insights from a financial news dataset.
 
-## Features
-- **Exploratory Data Analysis (EDA):**
-  - Descriptive statistics on headlines.
-  - Publisher contributions and trends in publication frequency.
-- **Sentiment Analysis:**
-  - Uses Hugging Face's `transformers` pipeline to determine sentiment (positive, negative, neutral).
-  - Sentiment distribution visualization.
-- **Time Series Analysis:**
-  - Trends in publication frequency over time.
-- **Git Integration:**
-  - Project structured for easy collaboration and CI/CD workflows.
+Features
+Exploratory Data Analysis (EDA):
+Analyze the distribution and trends in news headlines.
+Investigate publisher contributions and publication frequency.
+Sentiment Analysis:
+Uses Hugging Face's transformers pipeline for sentiment classification (positive, negative, neutral).
+Provides visualizations of sentiment distributions.
+Time Series Analysis:
+Analyze trends in publication frequency over time.
+Git Integration:
+The project is structured to facilitate collaboration and CI/CD workflows.
 
 ## Project Structure
 ```
@@ -84,15 +84,10 @@ This repository contains a pipeline for analyzing financial news data to explore
    git push origin <branch_name>
    ```
 
-### Example Outputs
-- Descriptive statistics for headlines.
-- Sentiment distribution plots.
-- Trends in publication dates.
-
-## Contributing
-Contributions are welcome! Please follow the Git workflow outlined above. Submit pull requests with descriptive messages.
-
-## License
-This project is licensed under the MIT License. See the `LICENSE` file for details.
-
+Example Outputs
+Descriptive statistics for news headlines.
+Sentiment distribution visualizations.
+Time series analysis of publication dates and trends.
+Contributing
+We welcome contributions! Please follow the Git workflow described above, and submit pull requests with descriptive commit messages.
 
