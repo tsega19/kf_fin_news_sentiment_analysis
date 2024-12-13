@@ -1,0 +1,98 @@
+# Financial News Analysis Project
+
+This repository contains a pipeline for analyzing financial news data to explore correlations between news sentiment and stock market movements. The analysis leverages exploratory data analysis (EDA), sentiment analysis, and time series analysis to extract insights from a financial news dataset.
+
+## Features
+- **Exploratory Data Analysis (EDA):**
+  - Descriptive statistics on headlines.
+  - Publisher contributions and trends in publication frequency.
+- **Sentiment Analysis:**
+  - Uses Hugging Face's `transformers` pipeline to determine sentiment (positive, negative, neutral).
+  - Sentiment distribution visualization.
+- **Time Series Analysis:**
+  - Trends in publication frequency over time.
+- **Git Integration:**
+  - Project structured for easy collaboration and CI/CD workflows.
+
+## Project Structure
+```
+├── .vscode/
+│   └── settings.json
+├── .github/
+│   └── workflows/
+│       └── unittests.yml
+├── .gitignore
+├── requirements.txt
+├── README.md
+├── src/
+│   ├── __init__.py
+│   └── analysis_pipeline.py
+├── notebooks/
+│   ├── __init__.py
+│   └── exploratory_analysis.ipynb
+├── tests/
+│   ├── __init__.py
+│   └── test_analysis.py
+└── scripts/
+    ├── __init__.py
+    └── run_analysis.py
+```
+
+## Getting Started
+
+### Prerequisites
+- Python 3.8+
+- Git
+
+### Setup Instructions
+1. Clone the repository:
+   ```bash
+   git clone <repository_url>
+   cd <repository_directory>
+   ```
+2. Create a virtual environment and activate it:
+   ```bash
+   python3 -m venv env
+   source env/bin/activate  # On Windows: env\Scripts\activate
+   ```
+3. Install the dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Set up the directory structure as described above if it is not already present.
+
+### Usage
+- **Run EDA and Sentiment Analysis:**
+  ```bash
+  python src/analysis_pipeline.py
+  ```
+- **Jupyter Notebooks:**
+  Open the notebooks in the `notebooks/` folder for exploratory analysis and visualization.
+
+### Git Workflow
+1. Create a new branch for each task:
+   ```bash
+   git checkout -b <branch_name>
+   ```
+2. Commit your work:
+   ```bash
+   git add .
+   git commit -m "Descriptive commit message"
+   ```
+3. Push changes to the repository:
+   ```bash
+   git push origin <branch_name>
+   ```
+
+### Example Outputs
+- Descriptive statistics for headlines.
+- Sentiment distribution plots.
+- Trends in publication dates.
+
+## Contributing
+Contributions are welcome! Please follow the Git workflow outlined above. Submit pull requests with descriptive messages.
+
+## License
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+
