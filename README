@@ -14,7 +14,7 @@ Analyze trends in publication frequency over time.
 Git Integration:
 The project is structured to facilitate collaboration and CI/CD workflows.
 
-## Project Structure
+Project Structure
 ```
 ├── .vscode/
 │   └── settings.json
@@ -38,13 +38,14 @@ The project is structured to facilitate collaboration and CI/CD workflows.
     └── run_analysis.py
 ```
 
-## Getting Started
+Getting Started
+Prerequisites
+Python 3.8+
+Git
+Setup Instructions
+Clone the repository:
 
-### Prerequisites
-- Python 3.8+
-- Git
-
-### Setup Instructions
+Setup Instructions
 1. Clone the repository:
    ```bash
    git clone <repository_url>
@@ -61,15 +62,15 @@ The project is structured to facilitate collaboration and CI/CD workflows.
    ```
 4. Set up the directory structure as described above if it is not already present.
 
-### Usage
-- **Run EDA and Sentiment Analysis:**
+Usage
+- Run EDA and Sentiment Analysis:
   ```bash
   python src/analysis_pipeline.py
   ```
 - **Jupyter Notebooks:**
   Open the notebooks in the `notebooks/` folder for exploratory analysis and visualization.
 
-### Git Workflow
+Git Workflow
 1. Create a new branch for each task:
    ```bash
    git checkout -b <branch_name>
@@ -85,9 +86,13 @@ The project is structured to facilitate collaboration and CI/CD workflows.
    ```
 
 Example Outputs
-Descriptive statistics for news headlines.
-Sentiment distribution visualizations.
-Time series analysis of publication dates and trends.
+- Descriptive statistics for headlines.
+- Sentiment distribution plots.
+- Trends in publication dates.
+
 Contributing
-We welcome contributions! Please follow the Git workflow described above, and submit pull requests with descriptive commit messages.
+Contributions are welcome! Please follow the Git workflow outlined above. Submit pull requests with descriptive messages.
+
+License
+This project is licensed under the MIT License. See the `LICENSE` file for details.
 
