@@ -64,7 +64,7 @@ This repository provides a robust pipeline for analyzing financial news data and
 ### Setup Instructions
 1. **Clone the repository:**
    ```bash
-   git clone <repository_url>
+   git clone [<repository_url>](https://github.com/tsega19/kf_fin_news_sentiment_analysis)
    cd <repository_directory>
    ```
 
