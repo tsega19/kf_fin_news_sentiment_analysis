@@ -1,6 +1,8 @@
 from scripts.stock_analysis import *
 from scripts.news_analysis import *
 from scripts.correlation import *
+from scripts.data_processing import *  # Import the new functions
+
 if __name__ == "__main__":
     # Stock analysis
     filepath = 'AAPL_historical_data.csv'
@@ -19,10 +21,29 @@ if __name__ == "__main__":
     output_path = '/data/aligned_news_stock_data.csv'
 
     # Load datasets
-    news_data, stock_data = load_datasets(news_data_path, stock_data_path)
+    news_data, stock_data = load_data(news_data_path), load_data(stock_data_path)
 
-    # Normalize dates
-    news_data, stock_data = normalize_dates(news_data, stock_data)
+    # Add headline length
+    news_data = add_headline_length(news_data)
+
+    # Count publishers
+    publisher_counts = publisher_count(news_data)
+
+    # Parse and normalize dates
+    news_data = parse_dates(news_data)
+    stock_data = parse_dates(stock_data)
+
+    # Analyze sentiment
+    news_data = analyze_sentiment(news_data)
+
+    # Extract keywords
+    news_data = extract_keywords(news_data)
+
+    # Set date as index
+    stock_data = set_date_index(stock_data)
+
+    # Analyze time features
+    news_data = analyze_time_features(news_data)
 
     # Align datasets and analyze sentiment
     aligned_data = align_and_analyze_sentiment(news_data, stock_data)
@@ -37,4 +58,4 @@ if __name__ == "__main__":
     visualize_returns(aligned_data)
     
     # Save the aligned dataset
-    save_aligned_data(aligned_data, output_path)
+    save_processed_data(aligned_data, output_path)
