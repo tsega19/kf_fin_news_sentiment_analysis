@@ -1,89 +1,61 @@
-# Import necessary libraries
 import pandas as pd
+from textblob import TextBlob
+import nltk
 import matplotlib.pyplot as plt
-import seaborn as sns
 
-def load_and_prepare_data(data_path):
-    """
-    Load the dataset and prepare it by converting date columns and extracting year, month, and day.
+# Ensure necessary NLTK packages are downloaded
+nltk.download('punkt')
 
-    Parameters:
-        data_path (str): Path to the input CSV file.
+def load_data(file_path):
+    """Load raw CSV data."""
+    return pd.read_csv(file_path)
 
-    Returns:
-        pd.DataFrame: Processed DataFrame.
-    """
-    data = pd.read_csv(data_path)
-def convert_date(data):
-    data['date'] = pd.to_datetime(data['date'], format='%Y-%m-%d %H:%M:%S', errors='coerce')
-    data['year'] = data['date'].dt.year
-    data['month'] = data['date'].dt.month
-    data['day'] = data['date'].dt.day
+def add_headline_length(data):
+    """Calculate headline length."""
+    data['headline_length'] = data['headline'].apply(len)
     return data
 
-def data_summary(df):
-    # This function takes a DataFrame as input and returns a summary of its contents.
-    # It includes the first few rows of the DataFrame (using head()), 
-    # general information about the DataFrame (using info()), 
-    # descriptive statistics for numerical columns (using describe()), 
-    # and the shape of the DataFrame (number of rows and columns).
-    info = df.head(), df.info(), df.describe(), df.shape
-    return info
-
-def calculate_headline_statistics(data):
-    """
-    Calculate descriptive statistics for headline lengths.
-
-    Parameters:
-        data (pd.DataFrame): Input DataFrame with a 'headline' column.
-
-    Returns:
-        pd.Series: Descriptive statistics of headline lengths.
-    """
-    headline_lengths = data['headline'].str.len()
-    return headline_lengths.describe()
-
-def count_articles_per_publisher(data):
-    """
-    Count the number of articles per publisher.
-
-    Parameters:
-        data (pd.DataFrame): Input DataFrame with a 'publisher' column.
-
-    Returns:
-        pd.Series: Counts of articles per publisher.
-    """
+def publisher_count(data):
+    """Count occurrences of each publisher."""
     return data['publisher'].value_counts()
 
-def plot_publication_trends(data):
-    """
-    Plot the trends of article publications over time.
+def parse_dates(data):
+    """Parse and normalize dates."""
+    data['date'] = pd.to_datetime(data['date'], format='%Y-%m-%d %H:%M:%S', errors='coerce')
+    return data
 
-    Parameters:
-        data (pd.DataFrame): Input DataFrame with a 'date' column.
+def analyze_sentiment(data):
+    """Perform sentiment analysis."""
+    data['sentiment'] = data['headline'].apply(lambda x: TextBlob(x).sentiment.polarity)
+    return data
 
-    Returns:
-        None
-    """
-    publication_trends = data['date'].dt.date.value_counts().sort_index()
+def extract_keywords(data):
+    """Extract keywords using NLP."""
+    data['keywords'] = data['headline'].apply(lambda x: nltk.word_tokenize(x))
+    return data
+
+def set_date_index(data):
+    """Set date as the index."""
+    data['date'] = pd.to_datetime(data['date'])
+    data.set_index('date', inplace=True)
+    return data
+
+def analyze_time_features(data):
+    """Analyze publishing times."""
+    data['hour'] = data.index.hour
+    data['day_of_week'] = data.index.dayofweek
+    return data
+
+def plot_sentiment(data):
+    """Plot sentiment over time."""
     plt.figure(figsize=(10, 6))
-    plt.plot(publication_trends.index, publication_trends.values, label="Articles Published")
-    plt.title("Publication Trends Over Time")
-    plt.xlabel("Date")
-    plt.ylabel("Number of Articles")
+    plt.plot(data.index, data['sentiment'], label='Sentiment')
+    plt.xlabel('Date')
+    plt.ylabel('Sentiment')
+    plt.title('Sentiment Over Time')
     plt.legend()
     plt.show()
 
 def save_processed_data(data, output_path):
-    """
-    Save the processed DataFrame to a CSV file.
-
-    Parameters:
-        data (pd.DataFrame): DataFrame to save.
-        output_path (str): Path to save the CSV file.
-
-    Returns:
-        None
-    """
-    output_path = 'processed_data.csv'
+    """Save processed data."""
     data.to_csv(output_path, index=False)
