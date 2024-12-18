@@ -64,7 +64,11 @@ This repository provides a robust pipeline for analyzing financial news data and
 ### Setup Instructions
 1. **Clone the repository:**
    ```bash
+<<<<<<< HEAD
+   git clone https://github.com/tsega19/kf_fin_news_sentiment_analysis.git
+=======
    git clone [<repository_url>](https://github.com/tsega19/kf_fin_news_sentiment_analysis)
+>>>>>>> 8f7b233c109b4c8206e1178f4db9ea514577bfee
    cd <repository_directory>
    ```
 
@@ -88,7 +92,7 @@ This repository provides a robust pipeline for analyzing financial news data and
 ### 1. **Run Analysis Pipeline:**
    Execute the pipeline script:
    ```bash
-   python scripts/run_analysis.py
+   python scripts/*.py
    ```
 
 ### 2. **Interactive Analysis:**
@@ -98,49 +102,3 @@ This repository provides a robust pipeline for analyzing financial news data and
    ```
 
 ---
-
-## Git Workflow
-
-1. **Create a new branch for each feature or task:**
-   ```bash
-   git checkout -b <branch_name>
-   ```
-
-2. **Commit your changes with descriptive messages:**
-   ```bash
-   git add .
-   git commit -m "Descriptive commit message"
-   ```
-
-3. **Push your changes to the remote repository:**
-   ```bash
-   git push origin <branch_name>
-   ```
-
-4. **Submit a pull request for review.**
-
----
-
-## Example Outputs
-
-- Descriptive statistics for news headlines.
-- Visualizations of sentiment distributions over time.
-- Insights into publishing trends and patterns.
-
----
-
-## Contributing
-
-Contributions are welcome! Follow the Git workflow outlined above and submit a pull request with detailed descriptions of your changes.
-
----
-
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
-
----
-
-## Contact
-
-For questions or suggestions, feel free to open an issue or reach out directly.
