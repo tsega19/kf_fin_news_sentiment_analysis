@@ -88,7 +88,11 @@ This repository provides a robust pipeline for analyzing financial news data and
 ### 1. **Run Analysis Pipeline:**
    Execute the pipeline script:
    ```bash
+<<<<<<< Updated upstream
    python scripts/*.py
+=======
+   python scripts/*.
+>>>>>>> Stashed changes
    ```
 
 ### 2. **Interactive Analysis:**
