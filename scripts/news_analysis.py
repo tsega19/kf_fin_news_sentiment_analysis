@@ -3,9 +3,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-import os
-print(os.path.exists("data/raw_analyst_ratings.csv"))
-
 def load_and_prepare_data(data_path):
     """
     Load the dataset and prepare it by converting date columns and extracting year, month, and day.
@@ -17,27 +14,12 @@ def load_and_prepare_data(data_path):
         pd.DataFrame: Processed DataFrame.
     """
     data = pd.read_csv(data_path)
-    data = convert_date(data)   
-    return data    
 def convert_date(data):
-    """
-    Convert 'date' column to datetime and extract year, month, and day.
-
-    Parameters:
-        data (pd.DataFrame): Input DataFrame containing a 'date' column.
-
-    Returns:
-        pd.DataFrame: Updated DataFrame with 'year', 'month', and 'day' columns.
-    """
     data['date'] = pd.to_datetime(data['date'], format='%Y-%m-%d %H:%M:%S', errors='coerce')
     data['year'] = data['date'].dt.year
     data['month'] = data['date'].dt.month
     data['day'] = data['date'].dt.day
     return data
-
-# Call the function and describe the data
-# data = load_and_prepare_data("data/raw_analyst_ratings.csv")
-# print(data.describe())
 
 def data_summary(df):
     # This function takes a DataFrame as input and returns a summary of its contents.
